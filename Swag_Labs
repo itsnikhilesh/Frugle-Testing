@@ -1,0 +1,49 @@
+package com;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import junit.framework.Assert;
+
+
+public class FrugalTesting {
+	public static void main(String[] args) {
+		System.setProperty("webdriver.chrome.driver", "D:\\\\\\\\ChromeDriver\\\\\\\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://www.saucedemo.com/");
+	    
+	    if(driver.getTitle().equals("Swag Labs")) {
+	    	System.out.println("The title is Swag Labs");
+	    };
+		
+	    driver.findElement(By.cssSelector("*[data-test=\"username\"]")).click();
+	    driver.findElement(By.cssSelector("*[data-test=\"username\"]")).sendKeys("standard_user");
+	    driver.findElement(By.cssSelector("*[data-test=\"password\"]")).click();
+	    driver.findElement(By.cssSelector("*[data-test=\"password\"]")).sendKeys("secret_sauce");
+	    driver.findElement(By.xpath("//input[@id=\'login-button\']")).click();
+	    driver.findElement(By.cssSelector("*[data-test=\"add-to-cart-sauce-labs-backpack\"]")).click();
+	    driver.findElement(By.cssSelector("*[data-test=\"shopping-cart-link\"]")).click();
+
+	    if(driver.findElement(By.cssSelector("*[data-test=\"inventory-item-name\"]")).getText()
+	    		.equals("Sauce Labs Backpack")) {
+	    	
+	    }{
+	    	System.out.println("The product is Sauce Labs Backpack");
+	    }
+	    driver.findElement(By.cssSelector("*[data-test=\"checkout\"]")).click();
+	    driver.findElement(By.cssSelector("*[data-test=\"firstName\"]")).click();
+	    driver.findElement(By.cssSelector("*[data-test=\"firstName\"]")).sendKeys("Test");
+	    driver.findElement(By.cssSelector("*[data-test=\"lastName\"]")).click();
+	    driver.findElement(By.cssSelector("*[data-test=\"lastName\"]")).sendKeys("User");
+	    driver.findElement(By.cssSelector("*[data-test=\"postalCode\"]")).click();
+	    driver.findElement(By.cssSelector("*[data-test=\"postalCode\"]")).sendKeys("12345");
+	    driver.findElement(By.cssSelector("*[data-test=\"continue\"]")).click();
+	    driver.findElement(By.cssSelector("*[data-test=\"finish\"]")).click();
+	    
+	    if(driver.findElement(By.xpath("//h2[normalize-space()=\'Thank you for your order!\']")).getText().equals("Thank you for your order!")) {
+	    	System.out.println("The final output is Thank you for your order");
+	    }
+		
+	}
+}
